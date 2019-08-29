@@ -1,0 +1,90 @@
+@font-face {
+  font-family: 'pa-pro-elements';
+  src:  url('../fonts/pa-pro-elements.eot?ycsdaz');
+  src:  url('../fonts/pa-pro-elements.eot?ycsdaz#iefix') format('embedded-opentype'),
+    url('../fonts/pa-pro-elements.ttf?ycsdaz') format('truetype'),
+    url('../fonts/pa-pro-elements.woff?ycsdaz') format('woff'),
+    url('../fonts/pa-pro-elements.svg?ycsdaz#pa-pro-elements') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="pa-pro-"], [class*=" pa-pro-"] {
+  font-family: 'pa-pro-elements' !important;
+}
+
+.pa-pro-multi-scroll:before {
+  content: "\e900";
+}
+.pa-pro-whatsapp:before {
+  content: "\e901";
+}
+.pa-pro-separator:before {
+  content: "\e902";
+}
+.pa-pro-ihover:before {
+  content: "\e903";
+}
+.pa-pro-social-counter:before {
+  content: "\e904";
+}
+.pa-pro-tabs:before {
+  content: "\e905";
+}
+.pa-pro-unfold:before {
+  content: "\e906";
+}
+.pa-pro-content-switcher:before {
+  content: "\e907";
+}
+.pa-pro-google-reviews:before {
+  content: "\e908";
+}
+.pa-pro-facebook-reviews:before {
+  content: "\e909";
+}
+.pa-pro-image-comparison:before {
+  content: "\e90a";
+}
+.pa-pro-behance-feed:before {
+  content: "\e90b";
+}
+.pa-pro-instagram-feed:before {
+  content: "\e90c";
+}
+.pa-pro-twitter-feed:before {
+  content: "\e90d";
+}
+.pa-pro-facebook-feed:before {
+  content: "\e90e";
+}
+.pa-pro-notification-bar:before {
+  content: "\e90f";
+}
+.pa-pro-hot-spot:before {
+  content: "\e910";
+}
+.pa-pro-table:before {
+  content: "\e911";
+}
+.pa-pro-magic-section:before {
+  content: "\e912";
+}
+.pa-pro-preview-window:before {
+  content: "\e913";
+}
+.pa-pro-charts:before {
+  content: "\e914";
+}
+.pa-pro-messenger-chat:before {
+  content: "\e915";
+}
+.pa-pro-icon-box:before {
+  content: "\e916";
+}
+.pa-pro-image-layers:before {
+  content: "\e917";
+}
+.pa-pro-flip-box:before {
+  content: "\e918";
+}
