@@ -26,6 +26,7 @@
       settings = $.extend({}, defaultSettings, settings),
       sections = {},
       currentSection = null,
+        canwheel=true,
       isScrolling = false;
 
     jQuery.extend(jQuery.easing, {
@@ -259,7 +260,7 @@
           .animate(
             { scrollTop: offset },
             settings.speed,
-            "easeInOutCirc",
+            "linear",
             function() {
               isScrolling = false;
             }
@@ -326,9 +327,14 @@
           return false;
       }
 
+      if(!canwheel){
+          event.preventDefault();
+      }
+
       if (isScrolling) {
         return false;
       }
+
 
       var $target = $(event.target),
         sectionSelector = checkTemps
@@ -343,26 +349,26 @@
         nextSectionId = false,
         delta = getDirection(event),
         direction = 0 > delta ? "down" : "up",
-        windowScrollTop = $window.scrollTop(),
-        dotIndex = $(".premium-vscroll-dot-item.active").index();
-      if ("mobile" === deviceType || "tablet" === deviceType) {
-        $(".premium-vscroll-tooltip").hide();
-        if (dotIndex === $itemsList.length - 1 && !$vTarget) {
-          $(".premium-vscroll-dots, .premium-vscroll-nav-menu").addClass(
-            "premium-vscroll-dots-hide"
-          );
-        } else if (dotIndex === 0 && !$vTarget) {
-          if ($instance.offset().top - $(document).scrollTop() > 200) {
-            $(".premium-vscroll-dots, .premium-vscroll-nav-menu").addClass(
-              "premium-vscroll-dots-hide"
-            );
-          }
-        } else {
-          $(".premium-vscroll-dots, .premium-vscroll-nav-menu").removeClass(
-            "premium-vscroll-dots-hide"
-          );
-        }
-      }
+        windowScrollTop = $window.scrollTop();
+      //   dotIndex = $(".premium-vscroll-dot-item.active").index();
+      // if ("mobile" === deviceType || "tablet" === deviceType) {
+      //   $(".premium-vscroll-tooltip").hide();
+      //   if (dotIndex === $itemsList.length - 1 && !$vTarget) {
+      //     $(".premium-vscroll-dots, .premium-vscroll-nav-menu").addClass(
+      //       "premium-vscroll-dots-hide"
+      //     );
+      //   } else if (dotIndex === 0 && !$vTarget) {
+      //     if ($instance.offset().top - $(document).scrollTop() > 200) {
+      //       $(".premium-vscroll-dots, .premium-vscroll-nav-menu").addClass(
+      //         "premium-vscroll-dots-hide"
+      //       );
+      //     }
+      //   } else {
+      //     $(".premium-vscroll-dots, .premium-vscroll-nav-menu").removeClass(
+      //       "premium-vscroll-dots-hide"
+      //     );
+      //   }
+      // }
 
       if (beforeCheck()) {
         sectionId = getFirstSection(sections);
@@ -385,10 +391,7 @@
         }
 
         if ("down" === direction) {
-          if (
-            !prevSectionId &&
-            sections[sectionId].offset > windowScrollTop + 5
-          ) {
+          if (!prevSectionId && sections[sectionId].offset > windowScrollTop + 5) {
             newSectionId = sectionId;
           } else {
             newSectionId = nextSectionId;
@@ -399,7 +402,7 @@
           $(".premium-vscroll-dots, .premium-vscroll-nav-menu").removeClass(
             "premium-vscroll-dots-hide"
           );
-         // event.preventDefault();
+           event.preventDefault();
           offset = sections[newSectionId].offset - settings.offset;
           currentSection = newSectionId;
           $itemsList.removeClass("active");
@@ -409,16 +412,18 @@
           );
 
           isScrolling = true;
+          canwheel = false;
           self.scrollStop();
           $htmlBody.animate(
             { scrollTop: offset },
             settings.speed,
-            "easeInOutCirc",
+            "linear",
             function() {
-              isScrolling = false;
+                isScrolling = false;
             }
           );
-        } else {
+        }
+        else {
           var $lastselector = checkTemps ? $instance : $("#" + sectionId);
           if ("down" === direction) {
             if (
@@ -438,7 +443,9 @@
               );
             }
           }
-        }
+            isScrolling = false;
+            canwheel=true;
+        }// end else
       }
     };
 
